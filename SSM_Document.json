@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "2.2",
+  "description": "Template for cleaning solr container log files",
+  "mainSteps": [
+    {
+      "action": "aws:runShellScript",
+      "name": "clearsolrcontainerlogs",
+      "inputs": {
+        "runCommand": [ "#!/bin/bash","for i in `ls /var/lib/docker/containers`","do","cat /dev/null > /var/lib/docker/containers/$i/$i-json.log","done"
+        ]
+      }
+    }
+  ]
+}
